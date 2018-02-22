@@ -47,7 +47,7 @@ describe('HELPER', () => {
         })
       }));
 
-      
+      expect(getPokemon())
     });
   })
 

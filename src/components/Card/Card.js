@@ -1,11 +1,11 @@
 import React from 'react';
-import propTypes, { shape, string, number } from 'prop-types';
+import propTypes, { arrayOf, shape, string, number } from 'prop-types';
 import './Card.css';
 
-export const Card = (type) => {
+export const Card = (type, showPokemon) => {
   const pokemonArray = type.pokemon.map(monster => {
     return (
-      <div className="monster">
+      <div className="monster" key={monster.id}>
         <h6>{monster.name}</h6>
         <img src={monster.picture} alt={`picture of ${monster.name}`}/>
         <h6>Weight: {monster.weight}</h6>
@@ -14,17 +14,22 @@ export const Card = (type) => {
   });
 
   return (
-    <article className="Card">
+    <article className="Card" onClick={() => showPokemon}>
       <h2>{type.name}</h2>
-      {pokemonArray}
+      <div className="hidden-pkm">
+        {pokemonArray}
+      </div>
     </article>
   );
 };
 
+const pokemon = {
+  id: number,
+  name: string,
+  weight: number,
+  picture: string
+}
+
 Card.propTypes = {
-  pokemon: shape({
-    name: string,
-    weight: number,
-    picture: string
-  })
+  type: arrayOf(pokemon)
 };
