@@ -4,6 +4,7 @@
   width: 200px;
   display: flex;
   flex-direction: column;
+  margin: 10px;
 }
 
 .Card h2 {
@@ -12,5 +13,13 @@
 
 .monster {
   border: 1px solid black;
+}
+
+.hidden-pkm {
   display: none;
+}
+
+.show-pkm {
+  height: 200px;
+  display: all;
 }

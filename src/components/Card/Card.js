@@ -16,7 +16,9 @@ export const Card = (type, showPokemon) => {
   return (
     <article className="Card" onClick={() => showPokemon}>
       <h2>{type.name}</h2>
-      {pokemonArray}
+      <div className="hidden-pkm">
+        {pokemonArray}
+      </div>
     </article>
   );
 };
