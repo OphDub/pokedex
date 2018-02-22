@@ -5,14 +5,13 @@ import { fakeAction } from '../../actions';
 import { fetchAndParse } from '../../helper';
 import { getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
-class FakeContainer extends Component {
+export class FakeContainer extends Component {
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
     const category = await fetchAndParse(url);
     console.log(category);
     const pokemon = await getPokemon(category);
     console.log(pokemon);
-    
 
     this.props.sendPokemonToStore(pokemon);
   }
@@ -39,9 +38,9 @@ FakeContainer.propTypes = {
   sendPokemonToStore: func.isRequired,
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
+export const mapStateToProps = ({ fake }) => ({ fake });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   fakeAction: () => dispatch(fakeAction()),
   sendPokemonToStore: (pokemon) => dispatch(savePokemon(pokemon))
 });
