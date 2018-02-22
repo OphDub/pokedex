@@ -62,7 +62,7 @@ const monsterTypes = shape({
 
 FakeContainer.propTypes = {
   pokemon: arrayOf(monsterTypes),
-  sendPokemonToStore: func.isRequired
+  sendPokemonToStore: func
 };
 
 export const mapStateToProps = ({ pokemon }) => ({
