@@ -3,8 +3,6 @@ import './App.css';
 import FakeContainer from '../../containers/FakeContainer/';
 
 class App extends Component {
-
-
   render() {
     return (
       <div className='App'>

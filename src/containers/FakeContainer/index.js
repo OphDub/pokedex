@@ -5,6 +5,7 @@ import { fakeAction } from '../../actions';
 import { fetchAndParse } from '../../helper';
 import { getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
+import { Card } from '../../components/Card/Card';
 export class FakeContainer extends Component {
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
@@ -18,25 +19,25 @@ export class FakeContainer extends Component {
     this.getPokemon();
   }
 
+  renderedCards = () => {
+    
+  }
+
   render() {
     return (
-      <div>
-        <button onClick={()=> {
-          this.props.fakeAction()
-          alert('FAKE')
-        }}> FAKE </button>
-      </div>
+      <section className="FakeContainer">
+      </section>
     );
   }
 }
 
 FakeContainer.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func.isRequired,
   sendPokemonToStore: func.isRequired,
 };
 
-export const mapStateToProps = ({ fake }) => ({ fake });
+export const mapStateToProps = ({ pokemon }) => ({
+  pokemon
+});
 
 export const mapDispatchToProps = dispatch => ({
   fakeAction: () => dispatch(fakeAction()),
