@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes, { func, arrayOf, shape, string } from 'prop-types';
+import propTypes, { func, arrayOf, shape, string, number } from 'prop-types';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
 import { fetchAndParse, getPokemon } from '../../helper';
@@ -7,6 +7,9 @@ import { savePokemon } from '../../actions/index';
 import { Card } from '../../components/Card/Card';
 import './FakeContainer.css';
 export class FakeContainer extends Component {
+  constructor () {
+    super();
+  }
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
     const category = await fetchAndParse(url);
@@ -19,13 +22,19 @@ export class FakeContainer extends Component {
     this.getPokemon();
   }
 
+  showPokemon = (e) => {
+    console.log('showing pokemon');
+  }
+
   renderedCards = () => {
     if (this.props.pokemon.length > 1) {
       const pokemonArray = this.props.pokemon.map(type => {
         return (
           <Card key={type.id}
             {...type}
-          />);
+            showPokemon={this.showPokemon}
+          />
+        );
       });
 
       return pokemonArray;
@@ -45,7 +54,7 @@ export class FakeContainer extends Component {
 
 const monster = shape({
   name: string,
-  weight: string,
+  weight: number,
   picture: string
 });
 
