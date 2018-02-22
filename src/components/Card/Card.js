@@ -13,8 +13,12 @@ export const Card = (type, showPokemon) => {
     );
   });
 
+  const changeClass = (e) => {
+    console.log(e.target);
+  }
+
   return (
-    <article className="Card" onClick={() => showPokemon}>
+    <article className="Card" onClick={(e) => changeClass(e)}>
       <h2>{type.name}</h2>
       <div className="hidden-pkm">
         {pokemonArray}
