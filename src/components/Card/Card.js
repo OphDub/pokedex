@@ -23,8 +23,6 @@ export class Card extends Component {
   }
 
   changeClass = () => {
-    console.log(this.props);
-    
     const { showing } = this.state;
     if (showing === 'hidden-pkm') {
       const toggle = 'show-pkm'

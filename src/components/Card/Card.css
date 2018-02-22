@@ -1,6 +1,5 @@
 .Card {
   background-color: white;
-  border: 1px solid black;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -9,6 +8,7 @@
 
 .Card h2 {
   margin: 0px;
+  border: 1px solid black;
 }
 
 .monster {
