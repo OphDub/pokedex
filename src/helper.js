@@ -1,6 +1,15 @@
 export const fetchAndParse = async (url) => {
-  const intialFetch = await fetch(url);
-  return await intialFetch.json();
+  const initialFetch = await fetch(url);
+
+  try {
+    if (initialFetch.code > 226) {
+      throw new Error('Unable to get Pokemon data!');
+    } else {
+      return await initialFetch.json();
+    }
+  } catch(error) {
+    throw error
+  }
 };
 
 export const getPokemon = async (category) => {

@@ -1,17 +1,23 @@
-import helper from './helper';
-import { mockIntialFetch } from './mockData';
+import { fetchAndParse, getPokemon } from './helper';
+import { mockInitialFetch } from './mockData';
 
 describe('HELPER', () => {
   describe('fetchAndParse', () => {
     it('should call fetch with the correct params', () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => Promise.resolve({
-          mockIntialFetch
+          mockInitialFetch
         })
       }))
-    });
-    const url = 'http://localhost:3001/pokemon/'
+      const url = 'http://localhost:3001/pokemon/'
 
-    expect(fetchAndParse(url)).toEqual(mockIntialFetch)
+      expect(window.fetch).not.toHaveBeenCalled();
+      fetchAndParse(url);
+      expect(window.fetch).toHaveBeenCalledWith(url)
+    });
+  });
+
+  describe('getPokemon', () => {
+
   });
 });
