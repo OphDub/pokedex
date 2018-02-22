@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import propTypes, { arrayOf, shape, string, number } from 'prop-types';
+import propTypes, { arrayOf, string, number } from 'prop-types';
 import './Card.css';
 
 export class Card extends Component {
@@ -7,7 +7,7 @@ export class Card extends Component {
     super();
     this.state = {
       showing: 'hidden-pkm'
-    }
+    };
   }
 
   pokemonArray = () => {
@@ -22,8 +22,8 @@ export class Card extends Component {
     });
   }
 
-  changeClass = (e) => {
-    console.log(e.target);
+  changeClass = () => {
+    const { showing } = this.state;
   }
 
   render () {
@@ -34,17 +34,18 @@ export class Card extends Component {
           {this.pokemonArray}
         </div>
       </article>
-    )
+    );
   }
-};
+}
 
 const pokemon = {
   id: number,
   name: string,
   weight: number,
   picture: string
-}
+};
 
 Card.propTypes = {
+  name: string,
   type: arrayOf(pokemon)
 };
