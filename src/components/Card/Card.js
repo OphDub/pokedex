@@ -11,7 +11,7 @@ export class Card extends Component {
   }
 
   pokemonArray = () => {
-    return this.props.type.pokemon.map(monster => {
+    return this.props.pokemon.map(monster => {
       return (
         <div className="monster" key={monster.id}>
           <h6>{monster.name}</h6>
@@ -23,7 +23,16 @@ export class Card extends Component {
   }
 
   changeClass = () => {
+    console.log(this.props);
+    
     const { showing } = this.state;
+    if (showing === 'hidden-pkm') {
+      const toggle = 'show-pkm'
+      this.setState({ showing: toggle })
+    } else {
+      const toggle = 'hidden-pkm'
+      this.setState({ showing: toggle })
+    }
   }
 
   render () {
@@ -31,7 +40,7 @@ export class Card extends Component {
       <article className="Card" onClick={this.changeClass}>
         <h2>{this.props.name}</h2>
         <div className={this.state.showing}>
-          {this.pokemonArray}
+          {this.pokemonArray()}
         </div>
       </article>
     );
