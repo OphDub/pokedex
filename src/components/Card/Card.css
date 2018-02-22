@@ -22,4 +22,5 @@
 .show-pkm {
   height: 200px;
   display: all;
+  overflow-y: auto;
 }
