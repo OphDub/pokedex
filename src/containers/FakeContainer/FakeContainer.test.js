@@ -18,4 +18,17 @@ describe('FAKE CONTAINER', () => {
 
     expect(mockDispatch).toHaveBeenCalled();
   });
+
+  it('should map the store correctly', () => {
+    const somePokemon = [
+      {name: 'Pikachu'}
+    ];
+    const mockStore = {
+      pokemon: somePokemon
+    };
+
+    const mapped = mapStateToProps(mockStore);
+
+    expect(mapped.pokemon).toEqual(mockStore.pokemon);
+  })
 });

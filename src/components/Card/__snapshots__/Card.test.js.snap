@@ -17,10 +17,41 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
+      "children": Array [
+        <h2 />,
+        <div
+          className="hidden-pkm"
+        />,
+      ],
       "className": "Card",
+      "onClick": [Function],
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "hidden-pkm",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+    ],
     "type": "article",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -29,10 +60,41 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
+        "children": Array [
+          <h2 />,
+          <div
+            className="hidden-pkm"
+          />,
+        ],
         "className": "Card",
+        "onClick": [Function],
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "hidden-pkm",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+      ],
       "type": "article",
     },
   ],
