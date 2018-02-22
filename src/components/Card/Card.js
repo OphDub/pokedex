@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes, { shape, string, number } from 'prop-types';
 import './Card.css';
 
-export const Card = (type, showPokemon) => {
+export const Card = (type) => {
   const pokemonArray = type.pokemon.map(monster => {
     return (
       <div className="monster">
@@ -10,11 +10,11 @@ export const Card = (type, showPokemon) => {
         <img src={monster.picture} alt={`picture of ${monster.name}`}/>
         <h6>Weight: {monster.weight}</h6>
       </div>
-    )
-  })
+    );
+  });
 
   return (
-    <article className="Card" onClick={showPokemon}>
+    <article className="Card">
       <h2>{type.name}</h2>
       {pokemonArray}
     </article>

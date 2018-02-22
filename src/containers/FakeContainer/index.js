@@ -19,24 +19,19 @@ export class FakeContainer extends Component {
     this.getPokemon();
   }
 
-  showPokemon = () => {
-    console.log('hi');
-  }
-
   renderedCards = () => {
     if (this.props.pokemon.length > 1) {
       const pokemonArray = this.props.pokemon.map(type => {
         return (
-        <Card key={type.id}
-          {...type}
-          showPokemon={this.showPokemon}
-          />)
+          <Card key={type.id}
+            {...type}
+          />);
       });
 
       return pokemonArray;
     }
 
-    return <img src={'../../../loading.gif'} alt="loading please wait"/>
+    return (<img src={'../../../loading.gif'} alt="loading please wait"/>);
   }
 
   render() {

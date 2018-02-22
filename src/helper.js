@@ -2,7 +2,7 @@ export const fetchAndParse = async (url) => {
   const initialFetch = await fetch(url);
 
   try {
-    if (initialFetch.code > 226) {
+    if (initialFetch.status > 226) {
       throw new Error('Unable to get Pokemon data!');
     } else {
       return await initialFetch.json();
