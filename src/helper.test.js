@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { fetchAndParse, getPokemon } from './helper';
 import { mockInitialFetch } from './mockData';
 

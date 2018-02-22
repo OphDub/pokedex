@@ -16,18 +16,18 @@ export const getPokemon = async (category) => {
   const fakeMonsters = category.map(async (type) => {
     const pkmInfo = await type.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
-      const thing = await fetchAndParse(url + pkm);
-      const monster = Object.assign({},
-        {name: thing.name},
-        {weight: thing.weight},
-        {picture: thing.sprites.front_default}
-      )
+      const intialPkm = await fetchAndParse(url + pkm);
+      const cleanPkm = Object.assign({},
+        {name: intialPkm.name},
+        {weight: intialPkm.weight},
+        {picture: intialPkm.sprites.front_default}
+      );
 
-      return monster
+      return cleanPkm;
     });
     const resolvedInfo = await Promise.all(pkmInfo);
 
-    return Object.assign(type, {pokemon: resolvedInfo})
+    return Object.assign(type, {pokemon: resolvedInfo});
   });
 
   const pocketMonsters = await Promise.all(fakeMonsters);
