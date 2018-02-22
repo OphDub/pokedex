@@ -3,4 +3,6 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  background: white;
+  padding: 15px;
 }

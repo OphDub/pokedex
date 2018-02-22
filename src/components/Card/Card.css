@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.Card h2 {
+  margin: 0px;
+}
+
 .monster {
   border: 1px solid black;
 }

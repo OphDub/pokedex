@@ -17,13 +17,7 @@ export const getPokemon = async (category) => {
     const pkmInfo = await type.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
       const initialPkm = await fetchAndParse(url + pkm);
-
-      const cleanPkm = Object.assign({},
-        {id: initialPkm.id},
-        {name: initialPkm.name},
-        {weight: initialPkm.weight},
-        {picture: initialPkm.sprites.front_default}
-      );
+      const cleanPkm = cleanPokemon(initialPkm);
 
       return cleanPkm;
     });
@@ -35,4 +29,21 @@ export const getPokemon = async (category) => {
   const pocketMonsters = await Promise.all(fakeMonsters);
 
   return pocketMonsters;
+}
+
+const getMonsterInfo = (type) => {
+  const url = `http://localhost:3001/pokemon/`;
+
+  type.pokemon.map(monster => {
+    const initialPkm = await fetchAndParse(url + monster);
+  })
+}
+
+const cleanPokemon = (pokemon) => {
+  return Object.assign({},
+    {id: pokemon.id},
+    {name: pokemon.name},
+    {weight: pokemon.weight},
+    {picture: pokemon.sprites.front_default}
+  );
 }
