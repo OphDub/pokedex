@@ -20,12 +20,15 @@ export class FakeContainer extends Component {
   }
 
   renderedCards = () => {
-    
+    if (this.props.pokemon.length > 1) {
+
+    }
   }
 
   render() {
     return (
       <section className="FakeContainer">
+      {this.renderedCards()}
       </section>
     );
   }
