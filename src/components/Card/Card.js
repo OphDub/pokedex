@@ -10,8 +10,8 @@ export class Card extends Component {
     };
   }
 
-  pokemonArray = () => {
-    return this.props.pokemon.map(monster => {
+  pokemonArray = async () => {
+    return await this.props.pokemon.map(monster => {
       return (
         <div className="monster" key={monster.id}>
           <h6>{monster.name}</h6>

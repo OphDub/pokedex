@@ -22,9 +22,9 @@ export class FakeContainer extends Component {
     this.getPokemon();
   }
 
-  renderedCards = () => {
+  renderedCards = async () => {
     if (this.props.pokemon.length > 1) {
-      const pokemonArray = this.props.pokemon.map(type => {
+      const pokemonArray = await this.props.pokemon.map(type => {
         return (
           <Card key={type.id}
             {...type}
@@ -62,7 +62,7 @@ const monsterTypes = shape({
 
 FakeContainer.propTypes = {
   pokemon: arrayOf(monsterTypes),
-  sendPokemonToStore: func.isRequired
+  sendPokemonToStore: func
 };
 
 export const mapStateToProps = ({ pokemon }) => ({
