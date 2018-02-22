@@ -5,4 +5,4 @@ const fakeReducer = (state='this is a fake action', action) => {
   }
 };
 
-export default fakeReducer
+export default fakeReducer;

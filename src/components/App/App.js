@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import FakeContainer from '../../containers/FakeContainer/'
+import FakeContainer from '../../containers/FakeContainer/';
 
 class App extends Component {
+
 
   render() {
     return (
