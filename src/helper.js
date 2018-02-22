@@ -3,16 +3,16 @@ export const fetchAndParse = async (url) => {
   return await intialFetch.json();
 };
 
-export const getPokemon = (category) => {
-  category.map((name) => {
-    const pocketMonsters = name.pokemon.map( async pkm => {
+export const getPokemon = async (category) => {
+  const fakeMonsters = category.map(async (name) => {
+    const things = await name.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
-      const monster = await fetchAndParse(url + pkm);
+      return await fetchAndParse(url + pkm);
     });
 
-    const realPokemon = Promise.all(pocketMonsters)
-    console.log(realPokemon);
+    return Promise.all(things);
+  });
+  const pocketMonsters = await Promise.all(fakeMonsters);
 
-    // const realPokemon = Promise.all(pocketMonsters);
-  })
+  return pocketMonsters;
 }
