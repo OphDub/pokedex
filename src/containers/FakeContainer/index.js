@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes, { shape, func, string } from 'prop-types';
+import propTypes, { func, arrayOf, shape, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
-import { fetchAndParse } from '../../helper';
-import { getPokemon } from '../../helper';
+import { fetchAndParse, getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
 import { Card } from '../../components/Card/Card';
 export class FakeContainer extends Component {
@@ -21,7 +20,13 @@ export class FakeContainer extends Component {
 
   renderedCards = () => {
     if (this.props.pokemon.length > 1) {
+      const pokemonArray = this.props.pokemon.map(type =>
+        type.pokemon.map(monster => {
+          return(<Card {...monster}/>)
+        })
+      );
 
+      return pokemonArray;
     }
   }
 
@@ -34,8 +39,21 @@ export class FakeContainer extends Component {
   }
 }
 
+const monster = shape({
+  name: string,
+  weight: string,
+  picture: string
+});
+
+const monsterTypes = shape({
+  id: string,
+  name: string,
+  pokemon: arrayOf(monster)
+});
+
 FakeContainer.propTypes = {
-  sendPokemonToStore: func.isRequired,
+  pokemon: arrayOf(monsterTypes),
+  sendPokemonToStore: func.isRequired
 };
 
 export const mapStateToProps = ({ pokemon }) => ({
