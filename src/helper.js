@@ -13,14 +13,16 @@ export const fetchAndParse = async (url) => {
 };
 
 export const getPokemon = async (category) => {
-  const fakeMonsters = category.map(async (name) => {
-    const things = await name.pokemon.map( async pkm => {
+  const fakeMonsters = category.map(async (type) => {
+    const pkmInfo = await type.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
       return await fetchAndParse(url + pkm);
     });
+    const resolvedInfo = await Promise.all(pkmInfo);
 
-    return Promise.all(things);
+    return Object.assign(type, {pokemon: resolvedInfo})
   });
+
   const pocketMonsters = await Promise.all(fakeMonsters);
 
   return pocketMonsters;

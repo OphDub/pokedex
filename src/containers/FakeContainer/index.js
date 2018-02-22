@@ -9,9 +9,7 @@ export class FakeContainer extends Component {
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
     const category = await fetchAndParse(url);
-    console.log(category);
     const pokemon = await getPokemon(category);
-    console.log(pokemon);
 
     this.props.sendPokemonToStore(pokemon);
   }
