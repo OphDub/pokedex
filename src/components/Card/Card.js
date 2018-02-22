@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import propTypes, { arrayOf, shape, string, number } from 'prop-types';
 import './Card.css';
 
-export const Card = (type, showPokemon) => {
-  let pokemonArray;
+export class Card extends Component {
+  constructor () {
+    super();
+    this.state = {
+      showing: 'hidden-pkm'
+    }
+  }
 
-  if (type.length>0) {
-    pokemonArray = type.pokemon.map(monster => {
+  pokemonArray = () => {
+    return this.props.type.pokemon.map(monster => {
       return (
         <div className="monster" key={monster.id}>
           <h6>{monster.name}</h6>
@@ -17,18 +22,20 @@ export const Card = (type, showPokemon) => {
     });
   }
 
-  const changeClass = (e) => {
+  changeClass = (e) => {
     console.log(e.target);
   }
 
-  return (
-    <article className="Card" onClick={(e) => changeClass(e)}>
-      <h2>{type.name}</h2>
-      <div className="hidden-pkm">
-        {pokemonArray}
-      </div>
-    </article>
-  );
+  render () {
+    return (
+      <article className="Card" onClick={this.changeClass}>
+        <h2>{this.props.name}</h2>
+        <div className={this.state.showing}>
+          {this.pokemonArray}
+        </div>
+      </article>
+    )
+  }
 };
 
 const pokemon = {
