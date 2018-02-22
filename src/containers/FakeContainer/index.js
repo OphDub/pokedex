@@ -5,6 +5,7 @@ import { fakeAction } from '../../actions';
 import { fetchAndParse, getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
 import { Card } from '../../components/Card/Card';
+import './FakeContainer.css';
 export class FakeContainer extends Component {
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
@@ -26,6 +27,8 @@ export class FakeContainer extends Component {
 
       return pokemonArray;
     }
+
+    return <img src={'../../../loading.gif'} alt="loading please wait"/>
   }
 
   render() {
