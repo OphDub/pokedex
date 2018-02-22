@@ -5,6 +5,7 @@ import { fakeAction } from '../../actions';
 import { fetchAndParse, getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
 import { Card } from '../../components/Card/Card';
+import './FakeContainer.css';
 export class FakeContainer extends Component {
   getPokemon = async () => {
     const url = 'http://localhost:3001/types';
@@ -21,11 +22,16 @@ export class FakeContainer extends Component {
   renderedCards = () => {
     if (this.props.pokemon.length > 1) {
       const pokemonArray = this.props.pokemon.map(type => {
-        return (<Card key={type.id} {...type}/>)
+        return (
+          <Card key={type.id}
+            {...type}
+          />);
       });
 
       return pokemonArray;
     }
+
+    return (<img src={'../../../loading.gif'} alt="loading please wait"/>);
   }
 
   render() {

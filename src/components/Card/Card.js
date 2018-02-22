@@ -10,8 +10,8 @@ export const Card = (type) => {
         <img src={monster.picture} alt={`picture of ${monster.name}`}/>
         <h6>Weight: {monster.weight}</h6>
       </div>
-    )
-  })
+    );
+  });
 
   return (
     <article className="Card">

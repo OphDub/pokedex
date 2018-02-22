@@ -2,7 +2,7 @@ export const fetchAndParse = async (url) => {
   const initialFetch = await fetch(url);
 
   try {
-    if (initialFetch.code > 226) {
+    if (initialFetch.status > 226) {
       throw new Error('Unable to get Pokemon data!');
     } else {
       return await initialFetch.json();
@@ -13,26 +13,25 @@ export const fetchAndParse = async (url) => {
 };
 
 export const getPokemon = async (category) => {
-  const fakeMonsters = category.map(async (type) => {
+  const pocketMonsters = category.map(async (type) => {
     const pkmInfo = await type.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
       const initialPkm = await fetchAndParse(url + pkm);
 
-      const cleanPkm = Object.assign({},
-        {id: initialPkm.id},
-        {name: initialPkm.name},
-        {weight: initialPkm.weight},
-        {picture: initialPkm.sprites.front_default}
-      );
-
-      return cleanPkm;
+      return cleanPokemon(initialPkm);
     });
-    const resolvedInfo = await Promise.all(pkmInfo);
 
-    return Object.assign(type, {pokemon: resolvedInfo});
+    return Object.assign(type, {pokemon: await Promise.all(pkmInfo)});
   });
 
-  const pocketMonsters = await Promise.all(fakeMonsters);
+  return Promise.all(pocketMonsters);
+}
 
-  return pocketMonsters;
+export const cleanPokemon = (pokemon) => {
+  return Object.assign({},
+    {id: pokemon.id},
+    {name: pokemon.name},
+    {weight: pokemon.weight},
+    {picture: pokemon.sprites.front_default}
+  );
 }
