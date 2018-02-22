@@ -3,13 +3,19 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
 import { fetchAndParse } from '../../helper';
+import { getPokemon } from '../../helper';
 import { savePokemon } from '../../actions/index';
 class FakeContainer extends Component {
-  componentDidMount = async () => {
+  getPokemon = async () => {
     const url = 'http://localhost:3001/types';
-    const pokemon = await fetchAndParse(url);
+    const intialFetch = await fetchAndParse(url);
+    getPokemon(intialFetch);
 
-    this.props.sendPokemonToStore(pokemon);
+    // this.props.sendPokemonToStore(pokemon);
+  }
+
+  componentDidMount () {
+    this.getPokemon();
   }
 
   render() {
@@ -26,7 +32,8 @@ class FakeContainer extends Component {
 
 FakeContainer.propTypes = {
   fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  fakeAction: func.isRequired,
+  sendPokemonToStore: func.isRequired,
 };
 
 const mapStateToProps = ({ fake }) => ({ fake });
