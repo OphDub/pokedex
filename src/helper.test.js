@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { fetchAndParse, getPokemon } from './helper';
-import { mockInitialFetch } from './mockData';
+import { fetchAndParse, getPokemon,cleanPokemon } from './helper';
+import { mockInitialFetch, dirtyPokemon, cleanedPokemon } from './mockData';
 
 describe('HELPER', () => {
   describe('fetchAndParse', () => {
@@ -20,8 +20,7 @@ describe('HELPER', () => {
 
   describe('cleanPokemon', () => {
     it('should return a new cleaned pokemon object', () => {
-      const dirtyPokemon = 
-      const cleanPokemon = 
+      expect(cleanPokemon(dirtyPokemon)).toEqual(cleanedPokemon);
     });
   });
 });

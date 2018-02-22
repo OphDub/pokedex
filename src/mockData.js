@@ -11,17 +11,25 @@ export const mockInitialFetch = [
 ];
 
 export const dirtyPokemon = {
+  id: "16",
   name: "pidgey",
-  sprites:[
-    back_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/16.png",
-    back_female: null,
-    back_shiny: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/16.png",
+  sprites:{
+    back_default:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/16.png",
+    back_female:null,
+    back_shiny:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/16.png",
     back_shiny_female: null,
     front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
     front_female:null,
     front_shiny:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/16.png",
     front_shiny_female:null,
-  ],
+  },
   type:"1",
   weight:18,
+}
+
+export const cleanedPokemon = {
+  id: "16",
+  name: "pidgey",
+  weight: 18,
+  picture: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
 }
