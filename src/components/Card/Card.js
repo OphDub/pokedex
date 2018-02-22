@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes, { shape, string, number } from 'prop-types';
 
 export const Card = (pokemon) => {
-  const { name, picture, weight }  = pokemon
+  const { name, picture, weight }  = pokemon;
   return (
     <article className="Card">
       <h5>{name}</h5>

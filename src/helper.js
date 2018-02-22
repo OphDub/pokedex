@@ -16,11 +16,13 @@ export const getPokemon = async (category) => {
   const fakeMonsters = category.map(async (type) => {
     const pkmInfo = await type.pokemon.map( async pkm => {
       const url = `http://localhost:3001/pokemon/`;
-      const intialPkm = await fetchAndParse(url + pkm);
+      const initialPkm = await fetchAndParse(url + pkm);
+
       const cleanPkm = Object.assign({},
-        {name: intialPkm.name},
-        {weight: intialPkm.weight},
-        {picture: intialPkm.sprites.front_default}
+        {id: initialPkm.id},
+        {name: initialPkm.name},
+        {weight: initialPkm.weight},
+        {picture: initialPkm.sprites.front_default}
       );
 
       return cleanPkm;

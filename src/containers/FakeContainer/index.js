@@ -22,7 +22,7 @@ export class FakeContainer extends Component {
     if (this.props.pokemon.length > 1) {
       const pokemonArray = this.props.pokemon.map(type =>
         type.pokemon.map(monster => {
-          return(<Card {...monster}/>)
+          return (<Card key={monster.id} {...monster}/>);
         })
       );
 
@@ -33,7 +33,7 @@ export class FakeContainer extends Component {
   render() {
     return (
       <section className="FakeContainer">
-      {this.renderedCards()}
+        {this.renderedCards()}
       </section>
     );
   }
