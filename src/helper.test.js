@@ -18,7 +18,10 @@ describe('HELPER', () => {
     });
   });
 
-  describe('getPokemon', () => {
-
+  describe('cleanPokemon', () => {
+    it('should return a new cleaned pokemon object', () => {
+      const dirtyPokemon = 
+      const cleanPokemon = 
+    });
   });
 });
